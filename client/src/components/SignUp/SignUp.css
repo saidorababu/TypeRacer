@@ -1,0 +1,106 @@
+
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+  }
+  .signUpPage{
+    min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  }
+  .or{
+    color: black;
+  }
+  .signUpContainer{
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    min-width: 250px;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid black;
+    padding: 30px 30px;
+    margin: 20px;
+  }
+  .signUpHeading{
+    font-size: 28px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(10, 3, 30);
+    font-weight: 700;
+    margin: 15px;
+    text-align: center;
+  }
+  .signUpForm{
+    color: black;
+    display: flex;
+    width: 95%;
+    flex-direction:column;
+    align-items: center;
+  }
+  .inputContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 0px;
+  }
+  .Input{
+    outline: none;
+    border: 1px solid black;
+    padding: 10px 6px;
+    border-radius: 7px;
+  }
+  .Input:hover{
+    outline: none;
+    border: 2px solid black;
+    padding: 10px 6px;
+    border-radius: 7px;
+  }
+  .required{
+    font-size: 13px;
+    color: red;
+    font-weight: 600;
+  }
+  .signUpButton{
+    background-color: rgb(37, 14, 150);
+    color: white;
+    font-weight: 600;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin: 10px 0px;
+  }
+  .signUpButton:hover{
+    background-color: rgb(5, 20, 81);
+    color: white;
+    font-weight: 600;
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin: 10px 0px;
+  }
+  .signUpButton:hover{
+    background-color: rgb(37, 14, 150);
+    color: white;
+    font-weight: 600;
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin: 10px 0px;
+  }
+  
+.bottomContainer{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+  
+  
+  
+  
+  

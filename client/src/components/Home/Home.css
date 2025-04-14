@@ -1,0 +1,165 @@
+
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+.homePage{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-image:url("./pexels-felixmittermeier-956981.jpg"); */
+    background-size: cover;
+    min-height: 120vh;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    align-items: center;
+    position:fixed;
+    width: 100vw;
+    justify-content: space-between;
+    background-color: rgb(2, 8, 38);
+    background-image: linear-gradient(270deg, rgb(5, 10, 81) 10%, rgb(2, 8, 40) 75%);
+    z-index: 20;
+}
+
+.navLeft{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.headingContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.mainHeading{
+    font-size: 28px;
+    font-weight: 800;
+    color: white;
+}
+.navElements{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.navElement{
+    margin: 0px 10px;
+}
+.profileContainer{
+    align-self: flex-end;
+    margin: 0px 15px;
+    /* background-color: rgb(2,8,100); */
+    display: flex;
+    flex-direction: column;
+
+
+}
+.username{
+    padding: 1px;
+    background-color: rgb(5, 10, 81);
+    color: white;
+    font-weight: 800;
+}
+.profileButton{
+    outline: none;
+    border: 1px solid rgb(4, 8, 100);
+    background-color: rgb(5, 10, 81);
+}
+.websiteIcon{
+    height: 62px;
+    width: 88px;
+}
+.profileImg{
+    height: 50px;
+    width: 50px;
+    /* background-color: transparent; */
+    border: 1px solid rgb(10, 10, 10);
+    border-radius: 4px;
+}
+.profileImg:hover{
+    height: 50px;
+    width: 50px;
+    border: 2px solid rgb(7, 7, 7);
+    border-radius: 4px;
+}
+.logoutbtnContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.logout-btn{
+    height: 70%;
+    width: 80px;
+    padding: 6px 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 0px 20px;
+}
+
+.resourcesContainer{
+    padding: 20px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 70px 0px;
+    background-size: cover;
+}
+
+.progress-bar {
+    width: 97%;
+    background-color: #f0ecec;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 10px;
+    padding: 10px 10px; 
+}
+.roomContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 200px;
+}
+.joinRoom-btn{
+    color: white;
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 40px;
+    border-radius: 20px;
+    padding: 20px;
+    background-image: linear-gradient(270deg, rgb(2, 8, 100) 10%, rgb(2, 8, 40) 75%);
+    border: 2px solid white;
+}
+.joinRoom-btn:hover{
+    color: white;
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 40px;
+    border-radius: 20px;
+    padding: 20px;
+    background-image: linear-gradient(270deg, rgb(2, 8, 120) 10%, rgb(2, 8, 60) 75%);
+    cursor: pointer;
+    border: 2px solid white;
+}
+.orText{
+    font-size: 24px;
+    color: white;
+    font-weight: 700;
+}
