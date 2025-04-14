@@ -1,4 +1,4 @@
-
+/* 
 *{
     box-sizing: border-box;
     padding: 0px;
@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* background-image:url("./pexels-felixmittermeier-956981.jpg"); */
     background-size: cover;
     min-height: 120vh;
 }
@@ -55,7 +54,6 @@
 .profileContainer{
     align-self: flex-end;
     margin: 0px 15px;
-    /* background-color: rgb(2,8,100); */
     display: flex;
     flex-direction: column;
 
@@ -79,7 +77,6 @@
 .profileImg{
     height: 50px;
     width: 50px;
-    /* background-color: transparent; */
     border: 1px solid rgb(10, 10, 10);
     border-radius: 4px;
 }
@@ -162,4 +159,265 @@
     font-size: 24px;
     color: white;
     font-weight: 700;
+} */
+
+
+/* Home.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.homePage {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.headingContainer {
+  display: flex;
+  align-items: center;
+}
+
+.mainHeading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00ffff;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navElements {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navElement {
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navElement:hover {
+  color: #00ffff;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profileButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.profileImg {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00ffff;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.logoutbtnContainer .logout-btn {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #e60000;
+}
+
+.roomContainer {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.joinRoomContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.joinRoom-btn {
+  background-color: #00bfff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.joinRoom-btn:hover {
+  background-color: #009acd;
+}
+
+.orText {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #ccc;
+}
+
+
+.modalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .joinModal {
+    background: #121212;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px #00ffd5;
+    text-align: center;
+    width: 300px;
+    animation: fadeInScale 0.3s ease-out;
+  }
+  
+  .joinModal h2 {
+    margin-bottom: 15px;
+    color: #00ffc8;
+  }
+  
+  .joinInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+  }
+  
+  .modalButtons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .joinConfirmBtn,
+  .joinCancelBtn {
+    padding: 8px 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .joinConfirmBtn {
+    background-color: #00ffc8;
+    color: black;
+  }
+  
+  .joinCancelBtn {
+    background-color: #ff4e4e;
+    color: white;
+  }
+  
+  .joinConfirmBtn:hover {
+    background-color: #00dab0;
+  }
+  
+  .joinCancelBtn:hover {
+    background-color: #e44040;
+  }
+  
+  @keyframes fadeInScale {
+    from {
+      transform: scale(0.7);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .navLeft {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+
+  .roomContainer {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .mainHeading {
+    font-size: 1.5rem;
+  }
+
+  .joinRoom-btn {
+    width: 100%;
+  }
+
+  .navElements {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }

@@ -128,7 +128,7 @@ function broadcastParticipants(raceId) {
     }
     io.to(raceId).emit("updateParticipants", participants);
 }
-
+let finishedPlayers = {};
 // Handle typing data from the client-side
 io.on("connection", (socket) => {
     console.log(`Socket ${socket.id} connected`);
@@ -136,6 +136,7 @@ io.on("connection", (socket) => {
     socket.on("joinRace", (raceId,username) => {
         socket.join(raceId);
         raceProgress.set(socket.id, {raceId,username,progress:0,wpm:0});
+        if (!finishedPlayers[raceId]) finishedPlayers[raceId] = [];
         broadcastParticipants(raceId);
         const raceProgressByRaceId = Array.from(raceProgress.entries())
             .filter(([socketId, data]) => data.raceId === raceId)
@@ -161,6 +162,16 @@ io.on("connection", (socket) => {
 
         io.to(raceId).emit("updateProgress", raceProgressByRaceId);
     });
+
+
+    socket.on("playerFinished", ({ username, speed, room }) => {
+        if (!finishedPlayers[room]) finishedPlayers[room] = [];
+        const alreadyExists = finishedPlayers[room].find(p => p.username === username);
+        if (!alreadyExists) {
+          finishedPlayers[room].push({ username, speed });
+          io.to(room).emit("updateFinishedPlayers", finishedPlayers[room]);
+        }
+      });
 });
 
 

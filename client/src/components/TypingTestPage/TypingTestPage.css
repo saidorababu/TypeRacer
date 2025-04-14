@@ -1,4 +1,4 @@
-.typingTestPage{
+/* .typingTestPage{
     margin: 100px 20px;
     background-color: white;
     border-radius: 10px;
@@ -13,16 +13,6 @@
     justify-content: space-between;
 }
 
-/* .progress-bar{
-    width: 100%;
-    height: 35px;
-    border-radius: 10px;
-    margin: 20px;
-}
-.progress{
-    margin: 20px;
-    padding: 10px 10px;
-} */
 
 .progress-bar {
     width: 97%;
@@ -41,7 +31,7 @@
 .container {
   display: flex;
   flex-direction: row;
-  align-items: center; /* Optional: Align items vertically in the center */
+  align-items: center;
 }
 .progresscontainer{
     display: flex;
@@ -103,4 +93,279 @@ input {
 .stats p {
   font-size: 20px;
   font-weight: bold;
+} */
+
+
+/* TypingTestPage.css */
+
+.typingTestPage {
+  min-height: 100vh;
+  background: rgba(31, 28, 44, 0.8);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  box-sizing: border-box;
+  animation: fadeIn 1s ease forwards;
 }
+
+.headingContainer {
+  text-align: center;
+}
+
+.headingContainer h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: #00ffff;
+}
+
+.TypingArea {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  width: 80%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.words span {
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+
+.words .correct {
+  background-color: #4caf50;
+  color: white;
+  animation: popIn 0.3s ease-out;
+}
+
+.words .current {
+  background-color: #ff9800;
+  color: white;
+}
+
+.TypingArea input {
+  padding: 0.75rem;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+  font-weight: bold;
+  animation: popIn 0.2s ease;
+}
+
+.TypingArea input:disabled {
+  background-color: #ddd;
+}
+
+.stats {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #00ffcc;
+}
+
+/* Progress section */
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 800px;
+  gap: 1rem;
+}
+
+.container {
+  width: 100%;
+  animation: fadeIn 0.6s ease forwards;
+  display: flex;
+}
+
+.progresscontainer {
+  background-color: #333;
+  border-radius: 8px;
+  height: 30px;
+  overflow: hidden;
+  margin-bottom: 0.3rem;
+}
+
+.progress {
+  background: linear-gradient(to right, #00bcd4, #009688);
+  color: #fff;
+  height: 100%;
+  line-height: 30px;
+  text-align: center;
+  font-weight: bold;
+  transition: width 0.4s ease;
+  border-radius: 8px 0 0 8px;
+  animation: fillProgress 0.6s ease-in-out;
+}
+
+/* Back button */
+.back-btn {
+  margin-top: 2rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #c2185b;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .TypingArea {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .words {
+    font-size: 1.1rem;
+  }
+
+  .back-btn {
+    width: 100%;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fillProgress {
+  0% { width: 0; }
+  100% { width: var(--progress); }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+.victoryOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.victoryCard {
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transform: scale(1);
+  animation: popIn 0.5s ease forwards;
+}
+
+.victoryCard h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.victoryCard p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.okBtn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  background-color: #00c9a7;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.okBtn:hover {
+  background-color: #02b293;
+}
+
+.rankingList {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.rankingList li {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.highlightPlayer {
+  background: rgba(0, 255, 170, 0.2);
+  font-weight: 700;
+  color: #00ffc8;
+}
+
+/* Animations */
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+

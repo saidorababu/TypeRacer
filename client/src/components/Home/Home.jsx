@@ -24,23 +24,38 @@ function Home({username,email,handleLogout}){
     const [isjoined, setIsJoined] = useState(false);
     const [words, setWords] = useState(null); 
 
+    const [showJoinModal, setShowJoinModal] = useState(false);
+    const [joinRoomId, setJoinRoomId] = useState('');
+
+
     if (!socket) {
         const newSocket = io("http://localhost:4000");
         setSocket(newSocket);
     }
 
     const handleJoinRoom = () => {
-        const room = parseInt(prompt("Enter room ID"));
-        if(room) {
+        setShowJoinModal(true);
+    };
+    
+
+    const confirmJoinRoom = () => {
+        const room = parseInt(joinRoomId);
+        if (room > 0) {
             joinRoom(room);
             setIsJoined(true);
+            setShowJoinModal(false);
+            setJoinRoomId('');
+        } else {
+            alert("Please enter a valid positive room number.");
         }
     };
+    
 
     const joinRoom = (room) => {
         setRoom(room);
         socket.emit("joinRace", room,username);
     };
+    
 
     if(socket){
         socket.on("updateTypingData",(words) => {
@@ -65,11 +80,11 @@ function Home({username,email,handleLogout}){
     }
 
     return (
-        <div className="homePage" style={{backgroundImage:'url("./pexels-felixmittermeier-956981.jpg")'}}>
+        <div className="homePage" style={{backgroundImage:'url("pexels-shkrabaanthony-5475752.jpg")'}}>
             <div className="navbar" >
                 <div className="headingContainer">
                     {/* <img className="websiteIcon" alt="website icon" src='' /> */}
-                    <h1 className="mainHeading">Type Racer</h1>
+                    <h1 className="mainHeading">Online Typing Racer</h1>
                 </div>
                 <div className="navLeft">
                     <div  className="navElements">
@@ -97,6 +112,32 @@ function Home({username,email,handleLogout}){
                     <button className="joinRoom-btn" onClick={handleJoinRoom}>Join Race</button>
                 </div>
             </div>}
+
+            {showJoinModal && (
+            <div className="modalBackdrop">
+                <div className="joinModal">
+                <h2>Join a Race Room</h2>
+                <input
+                    type="number"
+                    min="1"
+                    value={joinRoomId}
+                    onChange={(e) => setJoinRoomId(e.target.value.replace(/\D/g, ''))}
+                    placeholder="Enter Room ID"
+                    className="joinInput"
+                    />
+
+                <div className="modalButtons">
+                    <button className="joinConfirmBtn" onClick={confirmJoinRoom}>
+                    Join
+                    </button>
+                    <button className="joinCancelBtn" onClick={() => setShowJoinModal(false)}>
+                    Cancel
+                    </button>
+                </div>
+                </div>
+            </div>
+            )}
+
             
             {isjoined && (<TypingTestPage setIsJoined={setIsJoined} username={username} email={email} socket={socket} words = {words} room = {room} />)}
         </div>

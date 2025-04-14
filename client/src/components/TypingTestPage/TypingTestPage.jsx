@@ -6,6 +6,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useRef } from "react";
 
+// import victorySound from './assets/victory.mp3';
+
+
 function TypingTestPage({username,email,socket,room,setIsJoined}) {
     const navigate = useNavigate();
     
@@ -27,7 +30,8 @@ function TypingTestPage({username,email,socket,room,setIsJoined}) {
     const [bool, setBool] = useState(false);
     const [input, setInput] = useState();
     const inputRef = useRef(null);
-    
+    const [finishedPlayers, setFinishedPlayers] = useState([]);
+
     socket.on("updateProgress", (allProgress) => {
         setAllProgress(allProgress);
     });
@@ -36,6 +40,12 @@ function TypingTestPage({username,email,socket,room,setIsJoined}) {
         console.log("participants:",participants);
     });
 
+    useEffect(() => {
+        socket.on("updateFinishedPlayers", (players) => {
+            setFinishedPlayers(players); // List of { username, speed }
+        });
+    }, [socket]);
+    
     const handleProgress = async () => {
         if(words && index <= words.length){
             var progress = Math.round((index / (words.length-1)) * 100);
@@ -75,11 +85,14 @@ function TypingTestPage({username,email,socket,room,setIsJoined}) {
     }, [index,words]);
 
     useEffect(() => {
-        if(finished){
-            clearInterval(intervalId);
-            setTimeout(()=>{alert("YOU WON");setIsJoined(false)},1000);
+        if (finished) {
+          clearInterval(intervalId);
+          socket.emit("playerFinished", { username, speed, room });
+        //   const audio = new Audio(victorySound);
+        //   audio.play();
         }
-    }, [intervalId,finished]);
+      }, [intervalId, finished]);
+      
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -103,7 +116,7 @@ function TypingTestPage({username,email,socket,room,setIsJoined}) {
     return (
         <div className="typingTestPage">
             <div className="headingContainer">
-                <h1>Online Type Racer</h1>
+                {/* <h1>Online Type Racer</h1> */}
                 <h1>Race room:{room}</h1>
             </div>
             {words && (
@@ -143,7 +156,7 @@ function TypingTestPage({username,email,socket,room,setIsJoined}) {
                 {allProgress.map((item,i) => {
                     return (<div className="container">
                         <div className="progresscontainer" key={i}>
-                            <div className="progress" style={{width: `${item.progress}%`, minWidth: '60px'}}>{item.wpm} WPM</div>
+                            <div className="progress" style={{width: `${item.progress}%`, minWidth: '60px'}}>{item.progress}%</div>
                         </div>
                         <p style={{fontWeight:800}}>{item.username}</p>
                     </div>);
@@ -151,6 +164,42 @@ function TypingTestPage({username,email,socket,room,setIsJoined}) {
                 </div>
                 )
             }
+            {finished && (
+            <div className="victoryOverlay">
+                <div className="victoryCard">
+                <h2>🏁 You Won!</h2>
+                <p>Your Speed: {speed} WPM</p>
+                <button className="okBtn" onClick={() => setIsJoined(false)}>Back to Lobby</button>
+                </div>
+            </div>
+            )}
+
+            {finished && (
+            <div className="victoryOverlay">
+                <div className="victoryCard">
+                <h2>🏁 Race Complete!</h2>
+                <p>Your Speed: {speed} WPM</p>
+                <h3>🏅 Final Standings</h3>
+                <ol className="rankingList">
+                    {finishedPlayers.map((player, i) => (
+                    <li
+                        key={i}
+                        className={
+                        player.username === username ? "highlightPlayer" : ""
+                        }
+                    >
+                        {i + 1}. {player.username} - {player.speed} WPM
+                    </li>
+                    ))}
+                </ol>
+                <button className="okBtn" onClick={() => setIsJoined(false)}>
+                    Back to Lobby
+                </button>
+                </div>
+            </div>
+            )}
+
+
             <button className="back-btn" style={{width:'100px'}} onClick={() => {setIsJoined(false)}}>
             Back
             </button>
