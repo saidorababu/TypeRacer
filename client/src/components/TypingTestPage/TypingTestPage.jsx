@@ -155,10 +155,11 @@ function TypingTestPage({username,email,socket,room,setIsJoined}) {
             {(<div className="progress-bar">
                 {allProgress.map((item,i) => {
                     return (<div className="container">
+                        <div className="userNameLabel" style={{fontWeight:800}}>{item.username}</div>
                         <div className="progresscontainer" key={i}>
                             <div className="progress" style={{width: `${item.progress}%`, minWidth: '60px'}}>{item.progress}%</div>
                         </div>
-                        <p style={{fontWeight:800}}>{item.username}</p>
+                       
                     </div>);
                 })}
                 </div>
