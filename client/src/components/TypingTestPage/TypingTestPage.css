@@ -229,7 +229,7 @@ input {
 
 .userNameLabel {
   font-weight: bold;
-  width: 100px;
+  width: 90px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
